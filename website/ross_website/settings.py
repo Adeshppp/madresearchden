@@ -159,9 +159,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 #TODO update on deplotyment. 
 
@@ -170,9 +170,12 @@ PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 if debug_state() is True:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    
 else:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, "static"),
