@@ -2,7 +2,7 @@
 
 def debug_state():
     # WARNING: This needs to be update for deployment. 
-    return True
+    return False
 
 def secret_key():
     return "lalalalalalalalalalalalalalalalalalalalala"
@@ -12,9 +12,9 @@ def hosts():
 
     ALLOWED_HOSTS = []
 
-    if DEBUG == True:
+    if DEBUG:
         ALLOWED_HOSTS = ["*"]
-    elif DEBUG == False:
+    else:
         ALLOWED_HOSTS = ["*"]
 
     return ALLOWED_HOSTS

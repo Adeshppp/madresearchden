@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 from .test_secret import secret_key, debug_state, hosts
 #from .secret import secret_key, debug_state, hosts
-#import django_heroku
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -108,9 +108,9 @@ if DEBUG:
               'PORT': 5432 # default postgres port
           }
          }
-# else: 
-#     # Activate Django-Heroku.^M
-#     django_heroku.settings(locals())
+else: 
+    # Activate Django-Heroku.
+    django_heroku.settings(locals())
 
 # # Built in DB
 #      DATABASES = {
