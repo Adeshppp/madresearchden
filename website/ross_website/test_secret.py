@@ -2,7 +2,7 @@
 
 def debug_state():
     # WARNING: This needs to be update for deployment. 
-    return False
+    return True
 
 def secret_key():
     return "lalalalalalalalalalalalalalalalalalalalala"

@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 from .test_secret import secret_key, debug_state, hosts
 #from .secret import secret_key, debug_state, hosts
-import django_heroku
+#import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,6 +34,7 @@ ALLOWED_HOSTS = hosts()
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +44,6 @@ INSTALLED_APPS = [
     'homepage',
     'blog',
     'data_vis',
-
 
 ]
 
@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'ross_website.wsgi.application'
 
 
 # This is for a local postgres test db in a Docker container.
-if DEBUG is True:
+if DEBUG:
      DATABASES = {
           'default': {
               'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -108,9 +108,9 @@ if DEBUG is True:
               'PORT': 5432 # default postgres port
           }
          }
-else: 
-    # Activate Django-Heroku.^M
-    django_heroku.settings(locals())
+# else: 
+#     # Activate Django-Heroku.^M
+#     django_heroku.settings(locals())
 
 # # Built in DB
 #      DATABASES = {
@@ -160,14 +160,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 #TODO update on deplotyment. 
 
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 
-if debug_state() is True:
+if DEBUG:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
