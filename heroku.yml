@@ -8,13 +8,13 @@ build:
                 # bokeh: ./test_bokeh_app/Dockerfile
 run:
   # web: gunicorn ross_website.wsg -b 0.0.0.0:$PORT
-  web: python manage.py makemigrations && python manage.py migrate
-
+  web: gunicorn ross_website.wsgi:application --bind 0.0.0.0:$PORT 
+  
 release:
   image: web
   command:
-    - gunicorn ross_website.wsgi:application -b 0.0.0.0:$PORT
-
+    - python manage.py makemigrations && python manage.py migrate
+    # - python manage.py collectstatic --noinput
 
 
 # https://testdriven.io/blog/deploying-django-to-heroku-with-docker/
