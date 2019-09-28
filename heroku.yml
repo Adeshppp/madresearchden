@@ -7,13 +7,13 @@ build:
     web: ./website/Dockerfile
                 # bokeh: ./test_bokeh_app/Dockerfile
 run:
-  web: gunicorn ross_website.wsg -b 0.0.0.0:$PORT
-  #web: python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:$PORT
+  # web: gunicorn ross_website.wsg -b 0.0.0.0:$PORT
+  web: python manage.py makemigrations && python manage.py migrate
 
-# release:
-#   image: web
-#   command:
-#     - python manage.py collectstatic --noinput
+release:
+  image: web
+  command:
+    - gunicorn ross_website.wsg -b 0.0.0.0:$PORT
 
 
 
