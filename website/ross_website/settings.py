@@ -161,7 +161,6 @@ STATIC_URL = '/static/'
 
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 
-#print('-------------- STATIC ROOT', STATIC_ROOT, "BASE_DIR", BASE_DIR)
 
 STATIC_ROOT = ''
 
@@ -177,8 +176,10 @@ else:
     STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "local_static"),
+    os.path.join(PROJECT_ROOT, "local_static"),
 #    '/var/www/static/',
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+print('-------------- STATIC ROOT', STATIC_ROOT, "BASE_DIR", BASE_DIR, "PROJECT_ROOT", PROJECT_ROOT)
