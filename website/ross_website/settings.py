@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'ross_website.wsgi.application'
 
 
 # This is for a local postgres test db in a Docker container.
-if DEBUG:
+if not DEBUG:
      DATABASES = {
           'default': {
               'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -167,17 +167,17 @@ PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 if DEBUG:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     
 else:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-# #    '/var/www/static/',
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+#    '/var/www/static/',
+]
 
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static_build')
