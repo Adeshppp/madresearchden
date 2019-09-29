@@ -154,12 +154,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
 
 #TODO update on deplotyment. 
 
+# set - heroku config:set DISABLE_COLLECTSTATIC=0
+
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+print('-------------- STATIC ROOT', STATIC_ROOT)
 
 if DEBUG:
     MEDIA_ROOT = 'media'
@@ -174,8 +178,4 @@ STATICFILES_DIRS = [
 #    '/var/www/static/',
 ]
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static_build')
-# ]
-
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
