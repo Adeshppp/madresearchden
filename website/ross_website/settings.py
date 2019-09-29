@@ -167,13 +167,13 @@ STATIC_ROOT = ''
 if DEBUG:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')    
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')    
     
 else:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
     # heroku specific
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "local_static"),
