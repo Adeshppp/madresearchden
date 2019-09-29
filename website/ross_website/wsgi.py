@@ -10,8 +10,10 @@ https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
+from whitenoise import WhiteNoise
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ross_website.settings")
 
 
 application = get_wsgi_application()
+application = WhiteNoise(application)
