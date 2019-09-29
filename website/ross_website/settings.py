@@ -157,12 +157,13 @@ STATIC_URL = '/static/'
 
 
 #TODO update on deplotyment. 
-
 # set - heroku config:set DISABLE_COLLECTSTATIC=0
 
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 
-print('-------------- STATIC ROOT', STATIC_ROOT, "BASE_DIR", BASE_DIR)
+#print('-------------- STATIC ROOT', STATIC_ROOT, "BASE_DIR", BASE_DIR)
+
+STATIC_ROOT = ''
 
 if DEBUG:
     MEDIA_ROOT = 'media'
