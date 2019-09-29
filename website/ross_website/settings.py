@@ -121,7 +121,6 @@ else:
 #          }
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -169,12 +168,12 @@ PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 if DEBUG:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, '/website/staticfiles')
     
 else:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, '/website/staticfiles')
 
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, "static"),
