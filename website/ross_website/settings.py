@@ -176,7 +176,7 @@ else:
     STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, "local_static"),
+    os.path.join(BASE_DIR, "local_static"),
 #    '/var/www/static/',
 ]
 
