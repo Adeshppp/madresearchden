@@ -30,7 +30,7 @@ ALLOWED_HOSTS = hosts()
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
+  #  'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+   # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -162,24 +162,25 @@ STATIC_URL = '/static/'
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 
 
-STATIC_ROOT = ''
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
 
 if DEBUG:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')    
+    # STATIC_ROOT = os.path.join(BASE_DIR, 'static')    
     
 else:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
     # heroku specific
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "local_static"),
 #    '/var/www/static/',
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 print('-------------- STATIC ROOT', STATIC_ROOT, "BASE_DIR", BASE_DIR, "PROJECT_ROOT", PROJECT_ROOT)
