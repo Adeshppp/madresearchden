@@ -163,21 +163,20 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 #TODO update on deplotyment. 
 
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 if DEBUG:
     MEDIA_ROOT = 'media'
-    MEDIA_URL = 'media/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    MEDIA_URL = 'media/'    
     
 else:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-#    '/var/www/static/',
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# #    '/var/www/static/',
+# ]
 
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static_build')
