@@ -8,6 +8,11 @@ heroku git:remote -a $1
 
 heroku stack:set container -a $1
 
+# Add DB at hobby tier. 
+# django_heroku will deal with the login in settings.py
+heroku addons:create heroku-postgresql:hobby-dev
+
+# Force collect of static - just being explicit. 
 heroku config:set DISABLE_COLLECTSTATIC=0
 
 # Push the master branch to heroku
