@@ -98,19 +98,19 @@ WSGI_APPLICATION = 'ross_website.wsgi.application'
 
 
 # This is for a local postgres test db in a Docker container.
-if not DEBUG:
-     DATABASES = {
-          'default': {
-              'ENGINE': 'django.db.backends.postgresql_psycopg2',
-              'NAME': 'postgres',
-              'USER': 'postgres',
-              'HOST': 'db', # set in docker-compose.yml
-              'PORT': 5432 # default postgres port
-          }
-         }
-else: 
-    # Activate Django-Heroku.
-    django_heroku.settings(locals())
+# if DEBUG:
+#      DATABASES = {
+#           'default': {
+#               'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#               'NAME': 'postgres',
+#               'USER': 'postgres',
+#               'HOST': 'db', # set in docker-compose.yml
+#               'PORT': 5432 # default postgres port
+#           }
+#          }
+# else: 
+#     # Activate Django-Heroku.
+django_heroku.settings(locals())
 
 # # Built in DB
 #      DATABASES = {
