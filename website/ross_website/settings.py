@@ -13,20 +13,16 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 from .test_secret import secret_key, debug_state, hosts
 #from .secret import secret_key, debug_state, hosts
-import django_heroku
+# import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = secret_key()
-
-# for git
-# SECRET_KEY = "wlkv5(r&n4%-08pg-(f-$0w+-rk-*7#g#i0q4jmgkh_mqh=0tt"
 
 DEBUG = debug_state()
 ALLOWED_HOSTS = hosts()
@@ -98,19 +94,19 @@ WSGI_APPLICATION = 'ross_website.wsgi.application'
 
 
 # This is for a local postgres test db in a Docker container.
-# if DEBUG:
-#      DATABASES = {
-#           'default': {
-#               'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#               'NAME': 'postgres',
-#               'USER': 'postgres',
-#               'HOST': 'db', # set in docker-compose.yml
-#               'PORT': 5432 # default postgres port
-#           }
-#          }
-# else: 
-#     # Activate Django-Heroku.
-django_heroku.settings(locals())
+if DEBUG:
+     DATABASES = {
+          'default': {
+              'ENGINE': 'django.db.backends.postgresql_psycopg2',
+              'NAME': 'postgres',
+              'USER': 'postgres',
+              'HOST': 'db', # set in docker-compose.yml
+              'PORT': 5432 # default postgres port
+          }
+         }
+else: 
+    # Activate Django-Heroku.
+   django_heroku.settings(locals())
 
 # # Built in DB
 #      DATABASES = {
@@ -163,7 +159,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 #TODO update on deplotyment. 
 
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 if DEBUG:
     MEDIA_ROOT = 'media'
@@ -173,10 +169,10 @@ else:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-# #    '/var/www/static/',
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "local_static"),
+#    '/var/www/static/',
+]
 
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static_build')
