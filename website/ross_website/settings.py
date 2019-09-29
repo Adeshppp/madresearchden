@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 from .test_secret import secret_key, debug_state, hosts
 #from .secret import secret_key, debug_state, hosts
-import django_heroku
+#import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -95,15 +95,15 @@ WSGI_APPLICATION = 'ross_website.wsgi.application'
 
 # This is for a local postgres test db in a Docker container.
 if DEBUG:
-     DATABASES = {
-          'default': {
-              'ENGINE': 'django.db.backends.postgresql_psycopg2',
-              'NAME': 'postgres',
-              'USER': 'postgres',
-              'HOST': 'db', # set in docker-compose.yml
-              'PORT': 5432 # default postgres port
-          }
-         }
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'HOST': 'db', # set in docker-compose.yml
+            'PORT': 5432 # default postgres port
+            }
+        }
 else: 
     # Activate Django-Heroku.
    django_heroku.settings(locals())
@@ -153,7 +153,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static'
 
 
 #TODO update on deplotyment. 
@@ -161,19 +161,19 @@ STATIC_URL = '/static/'
 # set - heroku config:set DISABLE_COLLECTSTATIC=0
 
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 print('-------------- STATIC ROOT', STATIC_ROOT, "BASE_DIR", BASE_DIR)
 
 if DEBUG:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticl')    
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')    
     
 else:
     MEDIA_ROOT = 'media'
     MEDIA_URL = 'media/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    # heroku specific
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "local_static"),
