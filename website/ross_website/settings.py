@@ -106,7 +106,8 @@ if DEBUG:
         }
 else: 
     # Activate Django-Heroku.
-   django_heroku.settings(locals())
+    django_heroku.settings(locals())
+
 
 # # Built in DB
 #      DATABASES = {
@@ -162,7 +163,7 @@ STATIC_URL = '/static/'
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 
 
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 STATIC_URL = '/static/'
 
 if DEBUG:
